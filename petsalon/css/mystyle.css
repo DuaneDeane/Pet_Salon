@@ -1,0 +1,41 @@
+.btn-success {
+    background-color: #0013c0;
+    border:none;
+}
+
+.btn-success:hover {
+    background-color: #0013c0!important;
+}
+
+.pet {
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.bordered {
+    border: 1px solid black;
+}
+
+.services {
+    display: flex;
+    flex-direction: row;
+    padding-left: 1em;
+}
+
+.services li {
+    margin-right: 2em;
+    padding: 0;
+}
+
+.pet-section td {
+    border-left: 1px solid #999;
+    padding: 0 1em;
+}
+
+.pet-section th {
+    text-align: center;
+    font-weight: normal;
+    font-size: 85%;
+    color: #666;
+}
