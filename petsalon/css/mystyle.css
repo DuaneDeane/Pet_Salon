@@ -17,6 +17,14 @@
     border: 1px solid black;
 }
 
+.active {
+    border: 3px solid yellow;
+}
+
+.red-bg {
+    background-color: red;
+}
+
 .services {
     display: flex;
     flex-direction: row;
@@ -29,7 +37,7 @@
 }
 
 .pet-section td {
-    border-left: 1px solid #999;
+    border-left: 2px solid #999;
     padding: 0 1em;
 }
 

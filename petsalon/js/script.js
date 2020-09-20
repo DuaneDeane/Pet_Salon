@@ -12,6 +12,7 @@ var salon={
     pets:[]
 }
 
+var c=1;
 //object constructor
 class Pet{
     constructor(name,age,type,breed,color,gender,service,price,ownerName,contactPhone){
@@ -25,6 +26,8 @@ class Pet{
         this.price=price;
         this.ownerName=ownerName;
         this.contactPhone=contactPhone;
+        this.id=c;
+        c++;
     }
 }
 
@@ -51,7 +54,7 @@ function register(){
    console.log(thePet);
     // push thePet into the array
     salon.pets.push(thePet);
-    display();
+    display(thePet);
     salonprofit();
     clear();
 }
@@ -91,16 +94,51 @@ function salonprofit(){
 document.getElementById("salprof").innerHTML=`The total profit for the shop is $${total}`;
 }
 
+function deletePet(petId) {
+    // select the html element
+    var tr = $("#"+petId);
+    var indexDelete;
+    // travel the array (search function) --> petId===salon.pets[i].id
+    for(var i=0;i<salon.pets.length;i++){
+        var selected = salon.pets[i];
+        if(selected.id===petId){
+            indexDelete=i;
+        }
+    }
+    // delete teh pet from the array splice()
+    salon.pets.splice(indexDelete,1);
+    // delete the pet from the html
+    tr.remove();
+}
+
+function searchPet(){
+    var ss=$('#petSearch').val();
+    var searchString=ss.toLowerCase();
+    for(var i=0;i<salon.pets.length;i++){
+        var selected=salon.pets[i];
+        if(selected.name.toLowerCase()===searchString || selected.service.toLowerCase()===searchString){
+            $('#'+selected.id).addClass('active');
+            console.log(selected.id);
+        }
+        else{
+            $('#'+selected.id).removeClass('active');
+        }
+    }
+}
+
 function init(){
     // default
     console.log('script');
     salon.pets.push(scooby);
     salon.pets.push(scrappy);
     salon.pets.push(tweety);
-    display();
+    display(scooby);
+    display(scrappy);
+    display(tweety);
     salonprofit();
     // hook events
     $('#register-btn').on('click',register);
+    $('#search-btn').on('click',searchPet);
 }
 
 window.onload=init;
